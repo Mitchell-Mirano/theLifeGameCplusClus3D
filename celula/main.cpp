@@ -2,12 +2,12 @@
 #include <stdio.h>//esta libreria sirve para utilizar el printf
 //(el printf esta dentro de la libreria)
 #include <math.h> // sirve para utilizar funciones matematicas
-#include <windows.h> // sirve para utilizar la funcion Sleep
+//#include <windows.h> // sirve para utilizar la funcion Sleep
 //Sleep(hace que se vea mas lento la ejecucion)
 #include <gl/glut.h>// herramienta para opengl
 #include<GL/glu.h> // herramienta para opengl que facilita el uso de texturas
 //sirve para utilizar la funcion gluSphere
-#define M_PI 3.141592654 // define la constante M_PI
+//#define M_PI 3.141592654 // define la constante M_PI
 
 float black[] = {0,0,0}, white[]={1,1,1}, blue[] = {0,0,1}, sky[]={0,0.8,1}, rosa[]={0.737255,0.560784,0.560784};
 float red[] = {1,0,0}, green[]={0,1,0}, yellow[]={1,1,0},violet[]={1,0,1}, firebrick[]={0.556863,0.137255,0.137255};
@@ -238,7 +238,7 @@ void reshape (int w, int h)
 void Inicializacion(void)
 {
 glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH );/* modo en el q va a dibujarse*/
-glutInitWindowSize (800, 600); /* tamaño de ventana*/
+glutInitWindowSize (800, 600); /* tamaï¿½o de ventana*/
 glutInitWindowPosition (100, 100);/*posicion de la ventana */
 glutCreateWindow ("VIRUS");/* crea la ventana de nombre sistema solar*/
 
