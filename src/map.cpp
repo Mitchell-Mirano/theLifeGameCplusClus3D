@@ -47,6 +47,31 @@ class GameMap{
             return this->mapState[row][column];
         }
 
+        void updateMapValue(int row, int column){
+            if (row >= 0 && row < this->y_ncells && column >= 0 && column < this->x_ncells)
+            {
+                if (this->mapState[row][column] == 0)
+                {
+                    this->mapState[row][column] = 1;
+                }
+                else
+                {
+                    this->mapState[row][column] = 0;
+                }
+            }
+            else
+            {
+                if (this->mapState[y_ncells-1][x_ncells-1] == 0)
+                {
+                    this->mapState[y_ncells-1][x_ncells-1] = 1;
+                }
+                else
+                {
+                    this->mapState[y_ncells-1][x_ncells-1] = 0;
+                }
+            }
+        }
+
         void readMapFromFile(string filepath){
             string line;
             ifstream gameMapTxt(filepath);
