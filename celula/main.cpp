@@ -4,7 +4,7 @@
 #include <math.h> // sirve para utilizar funciones matematicas
 //#include <windows.h> // sirve para utilizar la funcion Sleep
 //Sleep(hace que se vea mas lento la ejecucion)
-#include <gl/glut.h>// herramienta para opengl
+#include <GL/glut.h>// herramienta para opengl
 #include<GL/glu.h> // herramienta para opengl que facilita el uso de texturas
 //sirve para utilizar la funcion gluSphere
 //#define M_PI 3.141592654 // define la constante M_PI

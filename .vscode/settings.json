@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "cstdlib": "cpp",
-        "source_location": "cpp"
+        "source_location": "cpp",
+        "random": "cpp"
     }
 }
