@@ -96,7 +96,8 @@ void Ejes(int c)
     }
 }
 
-void drawString(float x, float y, float z, char *string) {
+void drawString(float x, float y, float z, char *string, float *color) {
+  glColor3fv(color);
   glRasterPos3f(x, y, z);
 
   for (char* c = string; *c != '\0'; c++) {

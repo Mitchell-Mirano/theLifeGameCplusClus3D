@@ -10,16 +10,20 @@
 #include "./colors/colors.cpp"
 #include <cstdlib>
 #include <unistd.h>
+#include <string>
+#include <cstring>
 using namespace std;
 
-
+float separation = 1;
+float x_init = -10;
+float y_init = -10;
 bool leftMouseButtonDown = false;
 bool rightMouseButtonDown = false;
 int mouseXPos = 0;
 int mouseYPos = 0;
-double cameraY = 0;
+double cameraY = 15;
 double cameraAngle = 0;
-double cameraZoom = 10;
+double cameraZoom = 15;
 bool pauseGame = true;
 int window1;
 int window2;
@@ -30,7 +34,7 @@ void reshape(int w, int h)
     glViewport(0, 0, (GLsizei)w, (GLsizei)h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glFrustum(-1.0, 1.0, -1.0, 1.0, 1.5, 20.0);
+    glFrustum(-1.0, 1.0, -1.0, 1.0, 1.5, 40.0);
     glMatrixMode(GL_MODELVIEW);
 }
 
@@ -94,7 +98,13 @@ void display2D(void)
             drawLines(-200 + (j * 20), 200 - (i * 20), 20);
         }
     }
-    // drawString(0.0, 0.0, 0.0, "Esto es una prueba");
+    int cellsAlive = map.getCellsAlive();
+    string cellsAliveString = to_string(cellsAlive);
+    string s = "Cells alive: " + cellsAliveString;
+    int n = s.length();
+    char char_array[n + 1];
+    strcpy(char_array, s.c_str());
+    drawString(-195.0, 185.0, 0.0, char_array, white);
     glutSwapBuffers();
 }
 
@@ -123,12 +133,43 @@ void display3D(void)
     double cameraX = cos(cameraAngle) * cameraZoom;
     double cameraZ = sin(cameraAngle) * cameraZoom;
     gluLookAt(cameraX, cameraY, cameraZ, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-    Ejes(3);
+    // Ejes(3);
+    glColor3f(0.5, 0.5, 0.5);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glBegin(GL_POLYGON);
+    glVertex3f(-40, 0, 40);
+    glVertex3f(-40, 0, -40);
+    glVertex3f(40, 0, -40);
+    glVertex3f(40, 0, 40);
+    glEnd();
 
-    glPushMatrix();
-    glScalef(0.05, 0.05, 0.05);
-    Cell(red);
-    glPopMatrix();
+    for (int i = 0; i < 20; i++)
+    {
+        for (int j = 0; j < 20; j++)
+        {
+            glPushMatrix();
+            glTranslated(x_init + separation * i, 1, y_init + separation * j);
+            glScalef(0.025, 0.025, 0.025);
+            if (map.getMapValue(i, j) == 1)
+            {
+                Cell(green);
+            }
+            else
+            {
+                glScalef(0.5, 0.5, 0.5);
+                Cell(red);
+            }
+            glPopMatrix();
+        }
+    }
+    int cellsAlive = map.getCellsAlive();
+    string cellsAliveString = to_string(cellsAlive);
+    string s = "Cells alive: " + cellsAliveString;
+    int n = s.length();
+    char char_array[n + 1];
+    strcpy(char_array, s.c_str());
+    drawString(0.0, 10.0, 0.0, char_array, white);
+
     glFlush();
     glutSwapBuffers();
 }
@@ -138,18 +179,6 @@ void mouse3D(int button, int state, int x, int y)
     if (button == GLUT_LEFT_BUTTON)
     {
         leftMouseButtonDown = (state == GLUT_DOWN);
-    }
-    else if (button == GLUT_RIGHT_BUTTON)
-    {
-        rightMouseButtonDown = (state == GLUT_DOWN);
-    }
-    else if (button == 3)
-    {
-        cameraZoom -= 0.1;
-    }
-    else if (button == 4)
-    {
-        cameraZoom += 0.1;
     }
 
     glutPostRedisplay();
@@ -163,10 +192,6 @@ void mouseMotion3D(int x, int y)
             cameraAngle += 0.01;
         else if (x < mouseXPos)
             cameraAngle -= 0.01;
-        if (y > mouseYPos)
-            cameraY += 0.1;
-        else if (y < mouseYPos)
-            cameraY -= 0.1;
     }
     mouseXPos = x;
     mouseYPos = y;

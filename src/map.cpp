@@ -39,6 +39,18 @@ class GameMap{
             this->mapState.assign(this->y_ncells,vector<int>(this->x_ncells,0));
         }
 
+        int getCellsAlive(){
+            int cellsAlive=0;
+            for(int i=0;i<this->y_ncells;i++){
+                for(int j=0;j<this->x_ncells;j++){
+                    if(this->mapState[i][j]==1){
+                        cellsAlive++;
+                    }
+                }
+            }
+            return cellsAlive;
+        }
+
         void setMapValue(int row, int column,int value){
             this->mapState[row][column] = value;
         }
