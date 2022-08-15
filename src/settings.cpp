@@ -29,6 +29,7 @@ int window1;
 int window2;
 GameMap map;
 
+
 void reshape(int w, int h)
 {
     glViewport(0, 0, (GLsizei)w, (GLsizei)h);
@@ -71,9 +72,17 @@ void key(unsigned char key, int x, int y)
         pauseGame = !pauseGame;
         break;
     }
+
+    case ' ':
+    {
+        pauseGame = !pauseGame;
+        break;
+    }
+   
     }
     glutPostRedisplay();
 }
+
 
 // * ---- 2D -----
 
