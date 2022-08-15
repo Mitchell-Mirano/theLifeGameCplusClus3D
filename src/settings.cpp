@@ -158,7 +158,7 @@ void display3D(void)
         {
             glPushMatrix();
             glTranslated(x_init + separation * i, 1, y_init + separation * j);
-            glScalef(0.025, 0.025, 0.025);
+            glScalef(0.03, 0.03, 0.03);
             if (map.getMapValue(j,i) == 1)
             {
                 Cell(green);
