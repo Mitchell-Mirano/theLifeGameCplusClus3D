@@ -5,10 +5,43 @@
 #endif
 #include "./src/settings.cpp"
 
+void Mensaje(){
+
+printf(" =================================================================\n");
+printf("\t\t == PROYECTO DEL JUEGO DE LA VIDA ==\n");
+printf(" =================================================================\n\n ");
+
+printf(" GRUPO 2: \n");
+printf(" \tBalboa Palma Merly \n");
+printf(" \tMirano Caro Mitchell\n");
+printf(" \tVáquez Dávila Sebastian\n");
+
+printf(" =================================================================\n");
+printf("\t\t == REGLAS DEL JUEGO DE LA VIDA==\n");
+printf(" =================================================================\n\n ");
+
+printf(" [1]\t Si una celula esta viva y tiene dos o tres vecinas vivas, sobrevive\n");
+printf(" [2]\t Si una celula esta muerta y tiene tres vecinas vivas, nace \n");
+printf(" [3]\t Si una celula esta viva y tiene mas de tres vecinas vivas, muere\n");
+
+
+printf(" =================================================================\n");
+printf("\t\t == fUNCION DE LAS TECLAS Y MOUSE==\n");
+printf(" =================================================================\n\n ");
+
+printf(" [p]\t Pausar y empezar la escena del juego\n");
+printf(" [Barra espaciadora]\t Pausa o Inicia el juego \n");
+printf(" [Mouse]\t Mueve la escena del juego \n");
+
+printf("\n\n");
+}
+
+
 
 int main(int argc, char *argv[])
 {
     glutInit(&argc, argv);
+    Mensaje();
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(600, 600);
     glutInitWindowPosition(150, 100);
