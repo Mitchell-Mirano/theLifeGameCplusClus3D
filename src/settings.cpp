@@ -121,11 +121,11 @@ void mouse2D(int button, int state, int x, int y)
 {
     if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
     {
-        cout << "WINDOW " << glutGet(GLUT_WINDOW_WIDTH) << ", " << glutGet(GLUT_WINDOW_HEIGHT) << endl;
+        // cout << "WINDOW " << glutGet(GLUT_WINDOW_WIDTH) << ", " << glutGet(GLUT_WINDOW_HEIGHT) << endl;
         int i = y/(glutGet(GLUT_WINDOW_HEIGHT)/20);
         int j = x/(glutGet(GLUT_WINDOW_WIDTH)/20);
-        cout << i << "," << j << endl;
-        cout << "Left mouse button pressed at " << x << ", " << y << endl;
+        // cout << i << "," << j << endl;
+        // cout << "Left mouse button pressed at " << x << ", " << y << endl;
         map.updateMapValue(i, j);
     }
 
@@ -204,6 +204,6 @@ void mouseMotion3D(int x, int y)
     }
     mouseXPos = x;
     mouseYPos = y;
-    cout << "x: " << x << " y: " << y << endl;
+    // cout << "x: " << x << " y: " << y << endl;
     glutPostRedisplay();
 }

@@ -54,7 +54,6 @@ int main(int argc, char *argv[])
     glutMouseFunc(mouse2D);
 
     glShadeModel(GL_FLAT);
-    glEnable(GL_DEPTH_TEST);
     glutInitWindowSize(600, 600);
     glutInitWindowPosition(950, 100);
     window2 = glutCreateWindow("ventana 3D");
@@ -64,8 +63,7 @@ int main(int argc, char *argv[])
     glutKeyboardFunc(key);
     glutMouseFunc(mouse3D);
     glutMotionFunc(mouseMotion3D);
-    // glClearColor(1, 1, 1, 1);
-    // glEnable(GL_CULL_FACE);
+    glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
 
     glEnable(GL_DEPTH_TEST);
